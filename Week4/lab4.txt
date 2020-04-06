@@ -1,0 +1,7 @@
+Name: Lindsey Reynolds
+Date: 03/31/20
+Title: Lab4 Notes
+
+Graph 1: The first graph charts a document with 14 pages. With only 1 element in the cache, it results in 14 page faults. As the cache size increases, the page faults decrease, flattening out at 4 page faults for anything over a cache size of 4. 
+
+Graph 2: The second graph charts a document with 1000 pages. Starting with a cache size of 100, there are almost as many page faults as there are pages. As the cache size increases, the number of page faults decreases at the same rate. 

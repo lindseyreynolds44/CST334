@@ -1,0 +1,44 @@
+$ cat Makefile
+all: queue_test fifo
+
+queue_test: queue_test.c
+        gcc -o queue_test queue_test.c queue.c node.c -Wall -Werror
+
+fifo: fifo.c
+        gcc -o fifo fifo.c queue.c node.c -Wall
+
+clean:
+        rm -f fifo queue_test
+$ make
+gcc -o queue_test queue_test.c queue.c node.c -Wall -Werror
+gcc -o fifo fifo.c queue.c node.c -Wall
+
+$ ./queue_test
+Here are the top 8 integers:
+Content of the queue as follows.
+0 99
+1 201
+2 1
+3 22
+4 33
+5 69
+6 21
+7 2
+
+Dequeue the first 4
+
+Here are the top 4 integers:
+Content of the queue as follows.
+0 33
+1 69
+2 21
+3 2
+
+$ cat accesses.txt | ./fifo 100
+
+9026 Total Page Faults for 10001
+
+$ cat accesses.txt | ./fifo 200
+
+8064 Total Page Faults for 10001
+

@@ -1,0 +1,44 @@
+Name: Lindsey Reynolds
+Date: 04/07/20
+Title: Lab 5 Notes
+Description: This file answers the questions from lab 5
+
+
+Step 1: 
+- What happens? 
+    When the program runs, it prints hello from each thread, along with the 
+    corresponding iteration number. It is clear immediately that there is a bug. 
+- How many threads are created?
+    10 threads are created.
+- What values of i are passed in to each?
+    Values 0 through 9 are passed in to each thread.
+- Do you get the same result with multiple runs?
+    No, every run has a different result. 
+- What might happen if you are also running other demanding processes?
+    The iterations that each thread will print will be larger.
+- Are the parameters passed into the go() function per-thread?
+    No, they are shared state variables.
+- Where are those value's states stored by the compiler?
+    They are stored in the main threads stack. 
+- main() has a local variable i, is this per-thread or shared?
+    It is being shared amongst all the threads.
+- Where does the compiler store this variable?
+    The compiler stores this variable in the main threads stack. 
+- Why does this program sometimes print the same value of i?
+    It does this because the OS is doing context switches part way
+    through the go() function of each thread. The loop continues 
+    incrementing i each time the main thread is given the CPU, even 
+    though some threads are still waiting in their go() function and 
+    have not yet printed their iteration value. Then when each thread 
+    has the CPU back and prints its iteration value, the value of i has changed.
+    Many threads may be about to print their iteration value when a context 
+    switch occurs, so if they get the CPU back, one after the another, before 
+    the main thread can increment i again, they will print the same value. 
+
+Step 2: 
+- In order to fix this bug, I created a variable in the heap for each
+iteration through the loop and passed in a pointer to that value to 
+the corresponding call to go(). I made sure to call free() on these
+variables in the go() function as well. 
+
+Step 3: Done. 
