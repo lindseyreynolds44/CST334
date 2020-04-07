@@ -15,12 +15,16 @@ Step 1:
 - Do you get the same result with multiple runs?
     No, every run has a different result. 
 - What might happen if you are also running other demanding processes?
-    The iterations that each thread will print will be larger.
-- Are the parameters passed into the go() function per-thread?
-    No, they are shared state variables.
-- Where are those value's states stored by the compiler?
-    They are stored in the main threads stack. 
-- main() has a local variable i, is this per-thread or shared?
+    The values that each thread will print will be larger, since
+    the program will encounter more context switches as the CPUs resources
+    must be shared.
+- Is the local variable, arg, in the go() function per-thread?
+    Yes, this is a local, per-thread variable on each thread's stack,
+    however it is a pointer variable and it is pointing to a shared 
+    variable. 
+- Where are those value's state's stored by the compiler?
+    They are stored in the main thread's stack. 
+- main() has a local variable, i, is this per-thread or shared?
     It is being shared amongst all the threads.
 - Where does the compiler store this variable?
     The compiler stores this variable in the main threads stack. 
