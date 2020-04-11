@@ -1,7 +1,13 @@
 Name: Lindsey Reynolds
-Date: 04/07/20
-Title: Lab 5 Notes
-Description: This file answers the questions from lab 5
+Date: 04/14/20
+Title: Lab 6 Notes
+Description: This file answers the questions from lab 6
 
 
-Step 1: 
+Step 1: Explain what happens when you run the threadSync.c program? 
+    When this program runs, it simply creates 10 threads, using a loop. 
+    Each thread calls the go() function, which uses the semaphore, called
+    mutex as a lock, in order to keep more than one thread at a time from
+    executing the critical section within the go() function. The critical 
+    section of code simply prints out which thread has the lock 
+    and then returns after releasing it. 
