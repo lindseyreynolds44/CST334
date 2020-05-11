@@ -33,6 +33,7 @@ int main()
 {
   //initialize a binary semaphore with value 1
   mutex = sem_open("semaphore", O_CREAT, 0644, 1);
+  // sem_init(&mutex,0,1); // Professor's way 
 
   static int i;
   for (i = 0; i < NTHREADS; i++)
@@ -48,6 +49,7 @@ int main()
 
   //drop the semaphore when finished.
   sem_unlink("semaphore");
+  // sem_destroy(&mutex);
 
   return 0;
 }

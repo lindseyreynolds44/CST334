@@ -4,7 +4,8 @@
 // Description: This program demonstrates the utility of semaphores
 // to create producer and consumer threads. The producer thread adds
 // the letters of the alphabet to a buffer and the consumer reads
-// them out of the buffer, when there are letters to read. 
+// them out of the buffer, whenever there are letters to read. 
+// NOTE: I wrote this to be run on a Mac.
 
 #include <stdio.h>
 #include <unistd.h>
@@ -27,7 +28,7 @@ int get_index = 0;
 
 int main()
 {
-    //initialize semaphores
+    // Initialize the semaphores
     mutex = sem_open("lock", O_CREAT, 0644, 1);
     full = sem_open("full", O_CREAT, 0644, 0);
     empty = sem_open("empty", O_CREAT, 0644, N);
@@ -45,7 +46,7 @@ int main()
 
     printf("Main thread done.\n");
 
-    //drop the semaphores when finished
+    // Drop the semaphores when finished
     sem_unlink("lock");
     sem_unlink("full");
     sem_unlink("empty");
@@ -55,7 +56,7 @@ int main()
 
 /**
  * Add each letter of the alphabet into the buffer
- * param: the alphabet char array
+ * param: the char array containing the alphabet
  */
 void *producer(void *arg) {
     char *input = (char *) arg;
@@ -76,7 +77,6 @@ void *producer(void *arg) {
         sem_post(full);
         i++;
     }
-    printf("the buffer: %s\n", buffer);
 }
 
 /**
