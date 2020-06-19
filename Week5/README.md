@@ -8,5 +8,5 @@ the product of two matrices.
 * Type "make" into the terminal or command line
 * Type "./matrix" to run the program
 
-## Output
+#### Output
 ![output](output.png)
