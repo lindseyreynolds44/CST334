@@ -12,5 +12,5 @@ them from the buffer, whenever there are letters to read.
 * Type "./producerConsumer" to run the program
 
 #### Output
-![output1](Step2_output1.png)
-![output2](Step2_output2.png)
+(Step2_output1.png)
+(Step2_output2.png)
